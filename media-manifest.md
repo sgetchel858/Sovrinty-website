@@ -17,11 +17,11 @@ lazy-loaded, with a captions `<track>` slot. Animations must honor
 
 | id | type | scene | aspect | target length | status | notes |
 |---|---|---|---|---|---|---|
-| s0-framing        | anim  | S0 | 16/9 | —    | placeholder | "what does your AI do when it doesn't know" |
-| s1-single-source  | anim  | S1 | 16/9 | —    | placeholder | scattered content unifying into one governed source |
+| s0-framing        | anim  | S0 | 16/9 | —    | **live** (CSS/JS) | the unproven answer — confident reply with a hollow "unverified" seal. `pages/walkthrough.css` + `js/modules/walkthrough-scenes.js` |
+| s1-single-source  | anim  | S1 | 16/9 | —    | **live** (CSS/JS) | scattered sources → a forming gold chain → one sealed "Governed source of truth" |
 | s2-mission-control| video | S2 | 16/9 | ~30s | placeholder | Librarian detects + assigns; health → 100% |
 | s3-sme-desk       | video | S3 | 16/9 | ~20s | placeholder | SME inbox, complete in Teams/Slack |
-| s4-proof          | anim  | S4 | 16/9 | —    | placeholder | citation + audit trail; verbatim lock |
+| s4-proof          | anim  | S4 | 16/9 | —    | **live** (CSS/JS) | answer → citation thread → green "Verified" seal stamps → audit hash + Golden Spike |
 | s5-stays-current  | video | S5 | 16/9 | ~20s | placeholder | published → approve → health 100% |
 | s6-ask-anything   | video | S6 | 16/9 | ~20s | placeholder | ask a question, cited answer, gated |
 

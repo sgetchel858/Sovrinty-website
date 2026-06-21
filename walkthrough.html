@@ -16,7 +16,9 @@
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages/walkthrough.css">
   <script type="module" src="assets/js/app.js"></script>
+  <script type="module" src="assets/js/modules/walkthrough-scenes.js"></script>
 </head>
 <body>
   <div data-include="/partials/header.html"></div>
@@ -48,9 +50,14 @@
           </div>
           <div class="sv-scene__media">
             <figure class="sv-media sv-media--anim" data-anim="s0-framing" style="--aspect:16/9">
-              <div class="sv-media__placeholder" role="img" aria-label="Animation placeholder: framing — what your AI does when it doesn't know">
-                <span class="sv-media__tag">&#10022; Animation</span>
-                <span class="sv-media__id">s0-framing</span>
+              <div class="sv-sa sv-sa--s0" data-scene-anim="s0" aria-hidden="true">
+                <div class="sv-sa-q sv-rise sv-d1">What&rsquo;s our policy on data retention?</div>
+                <div class="sv-sa-a sv-rise sv-d3">
+                  <span class="sv-sa-line sv-sa-line--90"></span>
+                  <span class="sv-sa-line sv-sa-line--100"></span>
+                  <span class="sv-sa-line sv-sa-line--60"></span>
+                  <span class="sv-sa-doubt"><span class="sv-sa-doubt__seal">?</span>unverified</span>
+                </div>
               </div>
             </figure>
           </div>
@@ -73,9 +80,20 @@
           </div>
           <div class="sv-scene__media">
             <figure class="sv-media sv-media--anim" data-anim="s1-single-source" style="--aspect:16/9">
-              <div class="sv-media__placeholder" role="img" aria-label="Animation placeholder: scattered content unifying into one governed source">
-                <span class="sv-media__tag">&#10022; Animation</span>
-                <span class="sv-media__id">s1-single-source</span>
+              <div class="sv-sa sv-sa--s1" data-scene-anim="s1" aria-hidden="true">
+                <div class="sv-sa-s1__chips">
+                  <span class="sv-sa-chip sv-rise sv-d1">SharePoint</span>
+                  <span class="sv-sa-chip sv-rise sv-d2">Box</span>
+                  <span class="sv-sa-chip sv-rise sv-d3">Drives</span>
+                </div>
+                <div class="sv-sa-s1__links">
+                  <span class="sv-sa-s1-drop sv-sa-s1-drop--1"></span>
+                  <span class="sv-sa-s1-drop sv-sa-s1-drop--2"></span>
+                  <span class="sv-sa-s1-drop sv-sa-s1-drop--3"></span>
+                  <span class="sv-sa-s1-rail"></span>
+                  <span class="sv-sa-s1-trunk"></span>
+                </div>
+                <div class="sv-sa-core"><span class="sv-sa-core__seal"></span>Governed source of truth</div>
               </div>
             </figure>
           </div>
@@ -167,9 +185,15 @@
           </div>
           <div class="sv-scene__media">
             <figure class="sv-media sv-media--anim" data-anim="s4-proof" style="--aspect:16/9">
-              <div class="sv-media__placeholder" role="img" aria-label="Animation placeholder: citation and audit trail; verbatim lock">
-                <span class="sv-media__tag">&#10022; Animation</span>
-                <span class="sv-media__id">s4-proof</span>
+              <div class="sv-sa sv-sa--s4" data-scene-anim="s4" aria-hidden="true">
+                <div class="sv-sa-s4__answer sv-rise sv-d1">
+                  <span class="sv-sa-line sv-sa-line--100"></span>
+                  <span class="sv-sa-line sv-sa-line--60"></span>
+                  <span class="sv-sa-verify"><span class="sv-sa-verify__seal"></span>Verified</span>
+                </div>
+                <span class="sv-sa-s4__thread"></span>
+                <div class="sv-sa-s4__source sv-rise sv-d3">Approved source</div>
+                <div class="sv-sa-s4__audit sv-rise sv-d5"><span class="sv-sa-spike"></span><span class="sv-sa-hash">audit_71f0&hellip;c2</span></div>
               </div>
             </figure>
           </div>

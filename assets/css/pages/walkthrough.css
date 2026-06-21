@@ -1,0 +1,222 @@
+/* ============================================================
+   WALKTHROUGH SCENE ANIMATIONS (s0, s1, s4) — in-page CSS/JS
+   anim track. Token-only. Scroll-triggered: walkthrough-scenes.js
+   adds .is-in when a scene enters view (and immediately under
+   prefers-reduced-motion, where the global base.css rule
+   neutralizes the motion so the end state simply shows).
+
+   Brand: violet acts / GOLD PROVES — gold appears only as the
+   provenance chain + seals; the "unproven" S0 doubt uses amber
+   (the stale/warning hue), never gold.
+   ============================================================ */
+
+/* ---- Shared frame + reveal helper ----------------------- */
+.sv-sa {
+  position: relative;
+  aspect-ratio: var(--aspect, 16 / 9); /* a floor; overflow:visible lets content grow, no clipping */
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+  background: var(--surface-card);
+  border: var(--border-width-hairline) solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.sv-rise {
+  opacity: 0;
+  transform: translateY(var(--space-2));
+  transition: opacity var(--duration-slow) var(--ease-out) var(--d, 0ms),
+              transform var(--duration-slow) var(--ease-out) var(--d, 0ms);
+}
+.sv-sa.is-in .sv-rise { opacity: 1; transform: none; }
+.sv-d1 { --d: 100ms; } .sv-d2 { --d: 200ms; } .sv-d3 { --d: 300ms; }
+.sv-d4 { --d: 400ms; } .sv-d5 { --d: 500ms; } .sv-d6 { --d: 600ms; }
+
+/* ============================================================
+   S0 · The unproven answer
+   ============================================================ */
+.sv-sa--s0 { flex-direction: column; align-items: stretch; gap: var(--space-3); }
+.sv-sa-q {
+  align-self: flex-end;
+  max-width: 72%;
+  padding: var(--space-2) var(--space-4);
+  background: var(--brand-primary-subtle);
+  color: var(--text-link);
+  border-radius: var(--radius-md) var(--radius-md) var(--radius-xs) var(--radius-md);
+  font-size: var(--text-sm);
+}
+.sv-sa-a {
+  align-self: flex-start;
+  width: 82%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background: var(--surface-raised);
+  border: var(--border-width-hairline) solid var(--border-subtle);
+  border-radius: var(--radius-md) var(--radius-md) var(--radius-md) var(--radius-xs);
+}
+.sv-sa-line { height: var(--space-2); border-radius: var(--radius-full); background: var(--neutral-200); }
+.sv-sa-line--90 { width: 90%; }
+.sv-sa-line--100 { width: 100%; }
+.sv-sa-line--60 { width: 60%; }
+.sv-sa-doubt {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-semibold);
+  color: var(--lc-stale-fg);
+}
+.sv-sa-doubt__seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--space-5);
+  height: var(--space-5);
+  border-radius: 50%;
+  border: var(--border-width-thick) dashed var(--lc-stale-solid);
+  color: var(--lc-stale-fg);
+  font-family: var(--font-mono);
+}
+.sv-sa--s0.is-in .sv-sa-doubt__seal { animation: sv-sa-doubt 1.8s var(--ease-standard) 800ms 2; }
+@keyframes sv-sa-doubt {
+  0%, 100% { transform: scale(1); opacity: 0.65; }
+  50% { transform: scale(1.12); opacity: 1; }
+}
+
+/* ============================================================
+   S1 · Scattered sources → one governed source of truth
+   (a forming chain; mirrors the P2 ledger grammar, inverted)
+   ============================================================ */
+.sv-sa--s1 { flex-direction: column; gap: 0; }
+.sv-sa-s1__chips { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-2); width: 100%; }
+.sv-sa-chip {
+  justify-self: center;
+  padding: var(--space-1) var(--space-3);
+  background: var(--surface-raised);
+  border: var(--border-width-hairline) solid var(--border-default);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+.sv-sa-s1__links { position: relative; width: 100%; height: var(--space-10); flex: none; }
+.sv-sa-s1__links span {
+  position: absolute;
+  background: var(--border-subtle);
+  transition: background var(--duration-base) var(--ease-standard) var(--d, 0ms);
+}
+.sv-sa--s1.is-in .sv-sa-s1__links span { background: var(--audit-rail); }
+.sv-sa-s1-drop { top: 0; height: 50%; width: var(--border-width-heavy); transform: translateX(-50%); }
+.sv-sa-s1-drop--1 { left: 16.66%; } .sv-sa-s1-drop--2 { left: 50%; } .sv-sa-s1-drop--3 { left: 83.33%; }
+.sv-sa-s1-rail { left: 16.66%; right: 16.66%; top: 50%; height: var(--border-width-heavy); }
+.sv-sa-s1-trunk { left: 50%; top: 50%; bottom: 0; width: var(--border-width-heavy); transform: translateX(-50%); }
+.sv-sa-core {
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  background: var(--seal-surface);
+  border: var(--border-width-hairline) solid var(--seal-border);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+  opacity: 0;
+  transform: translateY(var(--space-2));
+  box-shadow: none;
+  transition: opacity var(--duration-slow) var(--ease-out) 400ms,
+              transform var(--duration-slow) var(--ease-out) 400ms,
+              box-shadow var(--duration-slow) var(--ease-standard) 700ms;
+}
+.sv-sa--s1.is-in .sv-sa-core { opacity: 1; transform: none; box-shadow: var(--glow-gold); }
+.sv-sa-core__seal {
+  width: var(--space-3);
+  height: var(--space-3);
+  flex: none;
+  transform: rotate(45deg);
+  background: var(--provenance-solid);
+  border-radius: var(--radius-xs);
+}
+
+/* ============================================================
+   S4 · Proof on every answer (cite → verify → audit)
+   ============================================================ */
+.sv-sa--s4 { flex-direction: column; align-items: center; gap: 0; }
+.sv-sa-s4__answer {
+  width: 78%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background: var(--surface-raised);
+  border: var(--border-width-hairline) solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+.sv-sa-verify {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-semibold);
+  color: var(--status-success-fg);
+}
+.sv-sa-verify__seal {
+  width: var(--space-4);
+  height: var(--space-4);
+  flex: none;
+  border-radius: 50%;
+  background: var(--status-success-solid);
+  transform: scale(1.5);
+  opacity: 0;
+  transition: transform var(--duration-base) var(--ease-out) 500ms,
+              opacity var(--duration-base) var(--ease-out) 500ms;
+}
+.sv-sa--s4.is-in .sv-sa-verify__seal { transform: scale(1); opacity: 1; }
+.sv-sa-s4__thread {
+  width: var(--border-width-heavy);
+  height: var(--space-8);
+  background: var(--audit-rail);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform var(--duration-base) var(--ease-out) 200ms;
+}
+.sv-sa--s4.is-in .sv-sa-s4__thread { transform: scaleY(1); }
+.sv-sa-s4__source {
+  padding: var(--space-2) var(--space-4);
+  background: var(--surface-raised);
+  border: var(--border-width-hairline) solid var(--seal-border);
+  border-radius: var(--radius-md);
+  font-size: var(--text-xs);
+  color: var(--text-primary);
+}
+.sv-sa-s4__audit {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+.sv-sa-spike {
+  width: var(--space-3);
+  height: var(--space-3);
+  flex: none;
+  transform: rotate(45deg);
+  background: var(--provenance-solid);
+  border-radius: var(--radius-xs);
+  box-shadow: var(--glow-gold);
+}
+.sv-sa-hash { font-family: var(--font-mono); font-size: var(--text-2xs); color: var(--provenance-strong); }
+
+/* Narrow phones: tighten the S1 source chips so the three never overflow. */
+@media (max-width: 480px) {
+  .sv-sa-s1__chips { gap: var(--space-1); }
+  .sv-sa-chip { padding: var(--space-1) var(--space-2); }
+}
