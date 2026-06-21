@@ -1,0 +1,20 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sovrinty seal">
+
+  <path d="M34 7 H66 L93 34 V66 L66 93 H34 L7 66 V34 Z" fill="#faf6fb" stroke="#662f78" stroke-width="3.5" stroke-linejoin="round"></path>
+  <path d="M34 7 H66 L93 34 V66 L66 93 H34 L7 66 V34 Z" fill="none" stroke="#662f78" stroke-width="1" stroke-linejoin="round" opacity="0.35" transform="scale(0.88) translate(6.8 6.8)"></path>
+
+
+  <rect x="27" y="40" width="46" height="7" rx="3.5" fill="#7d3a92"></rect>
+  <rect x="23" y="52" width="54" height="7" rx="3.5" fill="#662f78"></rect>
+  <rect x="29" y="64" width="42" height="7" rx="3.5" fill="#532762"></rect>
+
+
+
+  <path d="M44.5 24 H55.5 L53 70 L50 84 L47 70 Z" fill="#b6882c" stroke="#6f4f1c" stroke-width="1" stroke-linejoin="round"></path>
+
+  <path d="M47 26 L49 26 L48 68 L47.4 70 Z" fill="#e2c878" opacity="0.85"></path>
+
+  <path d="M40 15 H60 L56 25 H44 Z" fill="#cca33f" stroke="#6f4f1c" stroke-width="1" stroke-linejoin="round"></path>
+  <path d="M40 15 H60 L57.6 21 H42.4 Z" fill="#e2c878"></path>
+  <line x1="46" y1="20" x2="54" y2="20" stroke="#6f4f1c" stroke-width="1" opacity="0.5"></line>
+</svg>

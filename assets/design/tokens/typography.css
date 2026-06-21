@@ -1,0 +1,52 @@
+/* ============================================================
+   SOVRINT — TYPOGRAPHY TOKENS
+   Spectral (regal display serif) · IBM Plex Sans (UI/body) ·
+   IBM Plex Mono (audit logs, hashes, document IDs).
+   ============================================================ */
+
+:root {
+  /* Families */
+  --font-display: "Spectral", Georgia, "Times New Roman", serif;
+  --font-sans: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Weights */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* Type scale (px → rem at 16px base) — modular ~1.2 */
+  --text-2xs: 0.6875rem;  /* 11 — micro labels, audit meta */
+  --text-xs:  0.75rem;    /* 12 — captions, table meta */
+  --text-sm:  0.8125rem;  /* 13 — dense UI, secondary */
+  --text-base: 0.9375rem; /* 15 — body / UI default */
+  --text-md:  1rem;       /* 16 — comfortable body */
+  --text-lg:  1.1875rem;  /* 19 — lead, card titles */
+  --text-xl:  1.5rem;     /* 24 — section headers */
+  --text-2xl: 1.9375rem;  /* 31 — page titles */
+  --text-3xl: 2.5rem;     /* 40 — display */
+  --text-4xl: 3.25rem;    /* 52 — hero display */
+  --text-5xl: 4.25rem;    /* 68 — marketing hero */
+
+  /* Line heights */
+  --leading-tight: 1.12;
+  --leading-snug: 1.28;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.65;
+
+  /* Letter spacing */
+  --tracking-tight: -0.02em;
+  --tracking-snug: -0.011em;
+  --tracking-normal: 0em;
+  --tracking-wide: 0.04em;
+  --tracking-caps: 0.12em;   /* uppercase eyebrows / overlines */
+
+  /* Semantic roles */
+  --type-display-family: var(--font-display);
+  --type-display-weight: var(--weight-semibold);
+  --type-heading-family: var(--font-sans);
+  --type-heading-weight: var(--weight-semibold);
+  --type-body-family: var(--font-sans);
+  --type-mono-family: var(--font-mono);
+}

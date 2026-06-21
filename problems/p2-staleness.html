@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>P2 · Staleness — Sovrinty</title>
+  <meta name="description" content="The Golden Spike links answer to sources; when a source changes, everything downstream auto-flags stale and routes re-certification.">
+  <link rel="canonical" href="/problems/p2-staleness.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="P2 · Staleness — Sovrinty">
+  <meta property="og:description" content="Nobody acts on yesterday's truth: automatic staleness, linked answer to source.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../assets/media/img/seal.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/pages/p2-staleness.css">
+  <script type="module" src="../assets/js/app.js"></script>
+  <script type="module" src="../assets/js/modules/staleness-ripple.js"></script>
+</head>
+<body>
+  <div data-include="/partials/header.html"></div>
+
+  <main id="main">
+    <article class="sv-explainer">
+      <header class="sv-container sv-explainer__header">
+        <p class="sv-eyebrow">Problem P2 &middot; Staleness</p>
+        <h1 class="sv-explainer__pain">&ldquo;A trusted answer quietly goes stale and nobody notices.&rdquo;</h1>
+        <div class="sv-explainer__meta">
+          <span class="sv-lifecycle sv-lifecycle--approved"><span class="sv-lifecycle__dot"></span>Approved</span>
+          <span aria-hidden="true">&rarr;</span>
+          <span class="sv-lifecycle sv-lifecycle--stale"><span class="sv-lifecycle__dot"></span>Stale</span>
+        </div>
+      </header>
+
+      <div class="sv-container">
+        <div class="sv-explainer__grid">
+          <div>
+            <div class="sv-explainer__block">
+              <h2 class="sv-explainer__h">The moment it bites</h2>
+              <p class="sv-explainer__p">In Mission Control (Scene 2) a record days from expiry surfaces on its own; in Scene 5, a single upstream change ripples to everything built on it.</p>
+            </div>
+            <div class="sv-explainer__block">
+              <h2 class="sv-explainer__h">How Sovrinty handles exactly this</h2>
+              <p class="sv-explainer__p">The Golden Spike links every answer to the sources and expert Q&amp;A it&rsquo;s built on. The moment a source changes, everything downstream flips to stale and routes for re-certification &mdash; before anyone acts on yesterday&rsquo;s truth.</p>
+            </div>
+          </div>
+          <aside class="sv-explainer__aside">
+            <figure class="sv-media sv-media--anim" data-anim="p2-media" style="--aspect:16/9">
+              <div class="sv-ripple" data-ripple>
+                <div class="sv-ripple__stage" aria-hidden="true">
+                  <div class="sv-ripple__source">
+                    <span class="sv-ripple__source-label">Source document</span>
+                    <span class="sv-ripple__source-id">policy_v3.pdf</span>
+                    <span class="sv-ripple__source-flag">changed upstream</span>
+                  </div>
+                  <div class="sv-ripple__links">
+                    <span class="sv-ripple__trunk"></span>
+                    <span class="sv-ripple__rail"></span>
+                    <span class="sv-ripple__spike"></span>
+                    <span class="sv-ripple__drop sv-ripple__drop--1"></span>
+                    <span class="sv-ripple__drop sv-ripple__drop--2"></span>
+                    <span class="sv-ripple__drop sv-ripple__drop--3"></span>
+                  </div>
+                  <div class="sv-ripple__records">
+                    <div class="sv-ripple__record" data-record>
+                      <span class="sv-ripple__record-title">Onboarding answer</span>
+                      <span class="sv-lifecycle sv-lifecycle--approved"><span class="sv-lifecycle__dot"></span>Approved</span>
+                    </div>
+                    <div class="sv-ripple__record" data-record>
+                      <span class="sv-ripple__record-title">Pricing answer</span>
+                      <span class="sv-lifecycle sv-lifecycle--approved"><span class="sv-lifecycle__dot"></span>Approved</span>
+                    </div>
+                    <div class="sv-ripple__record" data-record>
+                      <span class="sv-ripple__record-title">Compliance answer</span>
+                      <span class="sv-lifecycle sv-lifecycle--approved"><span class="sv-lifecycle__dot"></span>Approved</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="sv-ripple__controls" hidden>
+                  <button type="button" class="sv-btn sv-btn--secondary sv-btn--sm" data-ripple-change>Change the source</button>
+                  <button type="button" class="sv-btn sv-btn--accent sv-btn--sm" data-ripple-recert hidden>Re-certify</button>
+                </div>
+                <p class="sv-ripple__caption" data-ripple-caption aria-live="polite">3 answers cite this source &middot; all current</p>
+              </div>
+            </figure>
+          </aside>
+        </div>
+
+        <div class="sv-explainer__back">
+          <a class="sv-link" href="/walkthrough.html#s2">Back to the journey &mdash; Scene 2, Mission Control</a>
+          <span class="sv-mono"> &middot; also <a href="/walkthrough.html#s5">Scene 5, Stays current</a></span>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <div data-include="/partials/cta.html"></div>
+  <div data-include="/partials/footer.html"></div>
+</body>
+</html>

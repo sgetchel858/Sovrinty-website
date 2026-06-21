@@ -1,0 +1,13 @@
+<svg width="360" height="76" viewBox="0 0 360 76" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sovrinty">
+  <g transform="translate(8 8) scale(0.6)">
+    <path d="M34 7 H66 L93 34 V66 L66 93 H34 L7 66 V34 Z" fill="#2b1233" stroke="#b377c6" stroke-width="3.5" stroke-linejoin="round"></path>
+    <rect x="27" y="40" width="46" height="7" rx="3.5" fill="#d0a8db"></rect>
+    <rect x="23" y="52" width="54" height="7" rx="3.5" fill="#b377c6"></rect>
+    <rect x="29" y="64" width="42" height="7" rx="3.5" fill="#984fad"></rect>
+    <path d="M44.5 24 H55.5 L53 70 L50 84 L47 70 Z" fill="#dcbb66" stroke="#8a6a24" stroke-width="1" stroke-linejoin="round"></path>
+    <path d="M40 15 H60 L56 25 H44 Z" fill="#ecd79e" stroke="#8a6a24" stroke-width="1" stroke-linejoin="round"></path>
+    <path d="M40 15 H60 L57.6 21 H42.4 Z" fill="#f3e6c4"></path>
+  </g>
+  <text x="78" y="40" font-family="Spectral, Georgia, serif" font-size="38" font-weight="600" fill="#ffffff" letter-spacing="-0.5">Sovrinty</text>
+  <text x="80" y="60" font-family="'IBM Plex Sans', sans-serif" font-size="9.5" font-weight="600" fill="#b377c6" letter-spacing="2.6">SOVEREIGN INTELLIGENCE LAYER</text>
+</svg>

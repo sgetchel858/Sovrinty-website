@@ -1,0 +1,175 @@
+/* ============================================================
+   SOVRINT — COLOR TOKENS
+   Regal violet primary · brass-gold accent (Golden Spike) ·
+   violet-tinged neutrals · lifecycle + semantic status.
+   Base scales first, semantic aliases below.
+   ============================================================ */
+
+:root {
+  /* ---- Regal Violet (primary) -----------------------------
+     Uncommon, slightly magenta-leaning royal purple — reads as
+     imperial/authoritative, deliberately not blue-indigo. */
+  --violet-50:  #faf6fb;
+  --violet-100: #f3e8f6;
+  --violet-200: #e6ceec;
+  --violet-300: #d0a8db;
+  --violet-400: #b377c6;
+  --violet-500: #984fad;
+  --violet-600: #7d3a92;
+  --violet-700: #662f78;  /* primary anchor */
+  --violet-800: #532762;
+  --violet-900: #44214f;
+  --violet-950: #2b1233;
+
+  /* ---- Brass Gold (accent · "Golden Spike") ---------------
+     Warm metallic brass, not lemon-yellow. Used sparingly for
+     provenance, the immutable chain, and key emphasis. */
+  --gold-50:  #fbf7ec;
+  --gold-100: #f6ecd0;
+  --gold-200: #ecd79e;
+  --gold-300: #dcbb66;
+  --gold-400: #cca33f;
+  --gold-500: #b6882c;  /* accent anchor */
+  --gold-600: #9a6f23;
+  --gold-700: #7c581f;
+  --gold-800: #62461d;
+  --gold-900: #4f3a1c;
+
+  /* ---- Neutrals (violet-tinged cool gray) ----------------- */
+  --neutral-0:   #ffffff;
+  --neutral-25:  #fcfbfd;
+  --neutral-50:  #f7f6f9;
+  --neutral-100: #efedf2;
+  --neutral-200: #e1dee7;
+  --neutral-300: #cac6d3;
+  --neutral-400: #a4a0b0;
+  --neutral-500: #7c788a;
+  --neutral-600: #5f5c6c;
+  --neutral-700: #494653;
+  --neutral-800: #343139;
+  --neutral-900: #211f27;
+  --neutral-950: #141318;
+
+  /* ---- Status hues (also used by lifecycle) --------------- */
+  --green-100: #d8efe1;
+  --green-200: #b3e0c6;
+  --green-500: #2f8f5b;
+  --green-600: #257049;
+  --green-700: #1d5a3a;
+
+  --blue-100:  #dbe8f6;
+  --blue-200:  #bcd3ec;
+  --blue-500:  #3a6ea5;
+  --blue-600:  #2f5a89;
+  --blue-700:  #264a72;
+
+  --amber-100: #f7e7c8;
+  --amber-200: #eed29a;
+  --amber-500: #c4811f;
+  --amber-600: #a26817;
+  --amber-700: #835414;
+
+  --red-100:   #f6dcd7;
+  --red-200:   #eebcb2;
+  --red-500:   #c0392b;
+  --red-600:   #a02d21;
+  --red-700:   #82241b;
+
+  /* ========================================================
+     SEMANTIC ALIASES — reference these in components.
+     ======================================================== */
+
+  /* Brand */
+  --brand-primary:        var(--violet-700);
+  --brand-primary-hover:  var(--violet-800);
+  --brand-primary-active: var(--violet-900);
+  --brand-primary-subtle: var(--violet-100);
+  --brand-on-primary:     #ffffff;
+  --brand-accent:         var(--gold-500);
+  --brand-accent-hover:   var(--gold-600);
+  --brand-accent-subtle:  var(--gold-100);
+  --brand-on-accent:      var(--neutral-950);
+
+  /* ---- PROVENANCE (gold as co-primary) --------------------
+     THE RULE: violet = ACTION (buttons, nav, focus, links).
+     gold = PROVENANCE (sealed, verified, the immutable chain,
+     the preferred citation, the Golden Spike). Never use gold
+     to fill an ordinary action — that cheapens the seal.
+     These are the tokens that carry provenance everywhere;
+     they re-point per theme (see themes.css for the Moment
+     scope), so a sealed thing stays correct on any ground. */
+  --provenance:        var(--gold-600);  /* brass ink — provenance text/icons */
+  --provenance-strong: var(--gold-700);  /* stronger brass ink (hashes) */
+  --provenance-solid:  var(--gold-500);  /* brass fill — markers, dark-ground CTA */
+  --on-provenance:     var(--violet-950);/* text/icon on a brass fill */
+  --seal-surface:      var(--gold-50);   /* sealed card / answer-of-record body */
+  --seal-surface-strong: var(--gold-100);/* stronger sealed tint */
+  --seal-border:       var(--gold-300);  /* edge of any sealed element */
+  --seal-header-bg:    var(--gold-500);  /* the brass header strip (Product) */
+  --seal-header-fg:    var(--violet-950);/* text on the brass strip (Product) */
+  --provenance-tint:   var(--gold-100);  /* preferred-citation block bg */
+  --audit-rail:        var(--gold-300);  /* chain-of-custody connecting rail */
+  --audit-node:        var(--gold-500);  /* sealed audit node */
+  --audit-node-ring:   var(--gold-100);  /* halo around a sealed node */
+
+  /* Surfaces */
+  --surface-page:    var(--neutral-50);
+  --surface-card:    var(--neutral-0);
+  --surface-sunken:  var(--neutral-100);
+  --surface-raised:  var(--neutral-0);
+  --surface-inverse: var(--violet-950);
+  --surface-overlay: rgba(20, 19, 24, 0.48);
+
+  /* Text */
+  --text-primary:   var(--neutral-900);
+  --text-secondary: var(--neutral-600);
+  --text-tertiary:  var(--neutral-500);
+  --text-disabled:  var(--neutral-400);
+  --text-on-brand:  #ffffff;
+  --text-link:      var(--violet-700);
+  --text-accent:    var(--gold-700);
+
+  /* Borders / lines */
+  --border-subtle:  var(--neutral-200);
+  --border-default: var(--neutral-300);
+  --border-strong:  var(--neutral-400);
+  --border-brand:   var(--violet-300);
+  --ring-focus:     color-mix(in oklab, var(--violet-600) 55%, transparent);
+
+  /* Status — generic */
+  --status-success-fg:     var(--green-700);
+  --status-success-bg:     var(--green-100);
+  --status-success-solid:  var(--green-600);
+  --status-info-fg:        var(--blue-700);
+  --status-info-bg:        var(--blue-100);
+  --status-info-solid:     var(--blue-600);
+  --status-warning-fg:     var(--amber-700);
+  --status-warning-bg:     var(--amber-100);
+  --status-warning-solid:  var(--amber-600);
+  --status-danger-fg:      var(--red-700);
+  --status-danger-bg:      var(--red-100);
+  --status-danger-solid:   var(--red-600);
+
+  /* ---- Lifecycle state machine ----------------------------
+     draft → in_review → approved → stale → archived
+     Each gets a foreground, a tint background, and a dot/solid. */
+  --lc-draft-fg:      var(--neutral-700);
+  --lc-draft-bg:      var(--neutral-100);
+  --lc-draft-solid:   var(--neutral-500);
+
+  --lc-review-fg:     var(--blue-700);
+  --lc-review-bg:     var(--blue-100);
+  --lc-review-solid:  var(--blue-500);
+
+  --lc-approved-fg:   var(--green-700);
+  --lc-approved-bg:   var(--green-100);
+  --lc-approved-solid: var(--green-500);
+
+  --lc-stale-fg:      var(--amber-700);
+  --lc-stale-bg:      var(--amber-100);
+  --lc-stale-solid:   var(--amber-500);
+
+  --lc-archived-fg:   var(--neutral-500);
+  --lc-archived-bg:   var(--neutral-100);
+  --lc-archived-solid: var(--neutral-400);
+}

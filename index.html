@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sovrinty — the trust layer for enterprise AI</title>
+  <meta name="description" content="Sovrinty is the governance and trust layer over enterprise AI: every answer drawn from approved, current sources, validated by humans, and backed by an immutable audit trail.">
+  <link rel="canonical" href="/index.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sovrinty — the trust layer for enterprise AI">
+  <meta property="og:description" content="Governed, current, and provable. Take the walkthrough, or jump straight to the problem you recognize.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/media/img/seal.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <script type="module" src="assets/js/app.js"></script>
+</head>
+<body>
+  <div data-include="/partials/header.html"></div>
+
+  <main id="main">
+    <!-- Hero — Moment ground (the one marketing-hero use of the deep-violet ceremony surface) -->
+    <section class="sv-hero" data-theme="moment">
+      <div class="sv-container sv-hero__inner">
+        <p class="sv-eyebrow sv-eyebrow--gold">Sovereign Intelligence Layer</p>
+        <!-- TODO: finalize hero headline + lead with Scott (see Outline Scene 0 framing) -->
+        <h1 class="sv-hero__title">Every answer your AI gives &mdash; approved, current, and provable.</h1>
+        <p class="sv-hero__lead">Sovrinty is the governance and trust layer over the AI you already run. It keeps every answer drawn from approved, current sources, validated by the people accountable for them, and backed by an immutable audit trail.</p>
+        <div class="sv-hero__actions">
+          <a class="sv-btn sv-btn--primary sv-btn--lg" href="/walkthrough.html">Take the walkthrough</a>
+          <a class="sv-btn sv-btn--secondary sv-btn--lg" href="#problems">Jump to your pain</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- The two doors -->
+    <section class="sv-section" aria-label="Two ways through">
+      <div class="sv-container">
+        <div class="sv-bigdoors">
+          <a class="sv-bigdoor" href="/walkthrough.html">
+            <p class="sv-eyebrow sv-eyebrow--brand">A &middot; Take the walkthrough</p>
+            <h2 class="sv-bigdoor__title">Play through the demo, on your own.</h2>
+            <p class="sv-bigdoor__desc">Detect, resolve, prove, keep current, ask anything &mdash; the guided journey, the way the demo runs it.</p>
+            <span class="sv-bigdoor__more sv-link">Start the walkthrough</span>
+          </a>
+          <a class="sv-bigdoor" href="#problems">
+            <p class="sv-eyebrow sv-eyebrow--brand">B &middot; Jump to your pain</p>
+            <h2 class="sv-bigdoor__title">Recognize the problem. Open the door.</h2>
+            <p class="sv-bigdoor__desc">Each problem in your own words. Click the one that stings, and get a short explainer showing exactly how Sovrinty handles that one.</p>
+            <span class="sv-bigdoor__more sv-link">See the doorways</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem doorways (Outline §B; pain lines are verbatim buyer's words) -->
+    <section class="sv-section sv-section--tight" id="problems" aria-labelledby="problems-title">
+      <div class="sv-container">
+        <div class="sv-section__head">
+          <p class="sv-eyebrow">Problem doorways</p>
+          <h2 class="sv-section__title" id="problems-title">Jump to your pain</h2>
+          <p class="sv-section__lead">Each problem in the buyer&rsquo;s own words &mdash; and exactly how Sovrinty handles that one.</p>
+        </div>
+
+        <div class="sv-doors">
+          <a class="sv-problem-card" href="/problems/p0-trust.html">
+            <span class="sv-problem-card__num">P0 &middot; Trust</span>
+            <span class="sv-problem-card__pain">&ldquo;I can&rsquo;t have hallucinations &mdash; I need answers I can prove.&rdquo;</span>
+            <span class="sv-problem-card__fix">Approved sources only, a citation on every claim, an immutable audit trail.</span>
+            <span class="sv-problem-card__more">Open this doorway &rarr;</span>
+          </a>
+          <a class="sv-problem-card" href="/problems/p1-locked-in-expertise.html">
+            <span class="sv-problem-card__num">P1 &middot; Locked-in expertise</span>
+            <span class="sv-problem-card__pain">&ldquo;The answer&rsquo;s already in our experts&rsquo; docs &mdash; we just can&rsquo;t read them fast enough.&rdquo;</span>
+            <span class="sv-problem-card__fix">Governed retrieval returns the answer in seconds, scoped to approved sources.</span>
+            <span class="sv-problem-card__more">Open this doorway &rarr;</span>
+          </a>
+          <a class="sv-problem-card" href="/problems/p2-staleness.html">
+            <span class="sv-problem-card__num">P2 &middot; Staleness</span>
+            <span class="sv-problem-card__pain">&ldquo;A trusted answer quietly goes stale and nobody notices.&rdquo;</span>
+            <span class="sv-problem-card__fix">The Golden Spike links answer to sources; a change auto-flags everything downstream stale and routes re-certification.</span>
+            <span class="sv-problem-card__more">Open this doorway &rarr;</span>
+          </a>
+          <a class="sv-problem-card" href="/problems/p3-find-the-sme.html">
+            <span class="sv-problem-card__num">P3 &middot; Find the SME</span>
+            <span class="sv-problem-card__pain">&ldquo;I can&rsquo;t tell who&rsquo;s qualified or available to review this.&rdquo;</span>
+            <span class="sv-problem-card__fix">SME profiles route each review by expertise, availability, and workload.</span>
+            <span class="sv-problem-card__more">Open this doorway &rarr;</span>
+          </a>
+          <a class="sv-problem-card" href="/problems/p4-chasing-the-sme.html">
+            <span class="sv-problem-card__num">P4 &middot; Chasing the SME</span>
+            <span class="sv-problem-card__pain">&ldquo;Once I find the SME, I spend all my time chasing them.&rdquo;</span>
+            <span class="sv-problem-card__fix">Review and approve in Teams or Slack; approve once, and it flows everywhere.</span>
+            <span class="sv-problem-card__more">Open this doorway &rarr;</span>
+          </a>
+          <a class="sv-problem-card" href="/problems/p7-conflicts.html">
+            <span class="sv-problem-card__num">P7 &middot; Conflicts</span>
+            <span class="sv-problem-card__pain">&ldquo;Two approved sources disagree and the AI hides it.&rdquo;</span>
+            <span class="sv-problem-card__fix">The conflict is surfaced and held apart, routed to an SME &mdash; not averaged away.</span>
+            <span class="sv-problem-card__more">Open this doorway &rarr;</span>
+          </a>
+          <a class="sv-problem-card" href="/problems/p8-verbatim.html">
+            <span class="sv-problem-card__num">P8 &middot; Verbatim</span>
+            <span class="sv-problem-card__pain">&ldquo;The exact wording a regulator requires gets paraphrased.&rdquo;</span>
+            <span class="sv-problem-card__fix">Verbatim enforcement locks regulated passages word-for-word.</span>
+            <span class="sv-problem-card__more">Open this doorway &rarr;</span>
+          </a>
+          <a class="sv-problem-card" href="/problems/p9-coverage.html">
+            <span class="sv-problem-card__num">P9 &middot; Coverage</span>
+            <span class="sv-problem-card__pain">&ldquo;I can&rsquo;t see what we don&rsquo;t know.&rdquo;</span>
+            <span class="sv-problem-card__fix">Unanswered and low-confidence queries become a coverage map of the gaps.</span>
+            <span class="sv-problem-card__more">Open this doorway &rarr;</span>
+          </a>
+          <a class="sv-problem-card" href="/problems/p5-access-control.html">
+            <span class="sv-problem-card__num">P5 &middot; Access control</span>
+            <span class="sv-problem-card__pain">&ldquo;Who&rsquo;s even allowed to receive this answer?&rdquo;</span>
+            <span class="sv-problem-card__fix">ABAC at the AI layer gates retrieval and answers by clearance.</span>
+            <span class="sv-problem-card__more">Open this doorway &rarr;</span>
+          </a>
+          <a class="sv-problem-card" href="/problems/p6-sovereignty.html">
+            <span class="sv-problem-card__num">P6 &middot; Sovereignty</span>
+            <span class="sv-problem-card__pain">&ldquo;Our answers can&rsquo;t leave our environment.&rdquo;</span>
+            <span class="sv-problem-card__fix">Sovereign and zero-exfiltration; air-gapped and on-prem options.</span>
+            <span class="sv-problem-card__more">Open this doorway &rarr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-include="/partials/cta.html"></div>
+  <div data-include="/partials/footer.html"></div>
+</body>
+</html>

@@ -1,0 +1,509 @@
+/* ============================================================
+   SOVRINTY — SITE COMPONENTS (sv-*)
+   BEM-lite, token-only. Every color/type/space/radius/shadow/
+   motion value comes from a CSS custom property defined in
+   tokens.css — never a literal hex or font name here.
+
+   Brand rule, enforced throughout: VIOLET ACTS, GOLD PROVES.
+   Violet carries actions (buttons, nav, links, focus).
+   Gold (provenance/seal tokens) carries proof only.
+   ============================================================ */
+
+/* ---- Layout primitives ---------------------------------- */
+.sv-container {
+  width: 100%;
+  max-width: var(--container-xl);
+  margin-inline: auto;
+  padding-inline: var(--space-6);
+}
+.sv-container--md { max-width: var(--container-md); }
+.sv-container--lg { max-width: var(--container-lg); }
+
+.sv-section { padding-block: var(--space-16); }
+.sv-section--tight { padding-block: var(--space-12); }
+.sv-section--hero { padding-block: var(--space-20); }
+
+.sv-divider {
+  border: 0;
+  border-top: var(--border-width-hairline) solid var(--border-subtle);
+  margin: 0;
+}
+
+.sv-skip-link {
+  position: absolute;
+  left: var(--space-3);
+  top: -100px;
+  z-index: var(--z-tooltip);
+  padding: var(--space-2) var(--space-4);
+  background: var(--surface-card);
+  color: var(--text-link);
+  border: var(--border-width-hairline) solid var(--border-default);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  transition: top var(--duration-base) var(--ease-standard);
+}
+.sv-skip-link:focus { top: var(--space-3); }
+
+/* Readable prose column */
+.sv-prose { max-width: 64ch; color: var(--text-secondary); line-height: var(--leading-relaxed); }
+.sv-prose p + p { margin-top: var(--space-4); }
+
+/* Section eyebrow + heading rhythm */
+.sv-section__head { max-width: var(--container-md); margin-bottom: var(--space-8); }
+.sv-section__title {
+  font-family: var(--font-display);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-2xl);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+}
+.sv-section__lead {
+  margin-top: var(--space-4);
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  line-height: var(--leading-snug);
+}
+
+/* ============================================================
+   Buttons — mirrors components/core/Button.jsx
+   primary (violet) · secondary · ghost · accent (brass seal)
+   ============================================================ */
+.sv-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  height: 38px;
+  padding-inline: var(--space-4);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  letter-spacing: -0.005em;
+  line-height: 1;
+  white-space: nowrap;
+  border: var(--border-width-hairline) solid transparent;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease-standard),
+              border-color var(--duration-fast) var(--ease-standard),
+              transform var(--duration-fast) var(--ease-standard),
+              box-shadow var(--duration-fast) var(--ease-standard);
+}
+.sv-btn:hover { text-decoration: none; }
+.sv-btn:active { transform: scale(0.98); }
+.sv-btn--lg { height: 46px; padding-inline: var(--space-6); font-size: var(--text-md); }
+.sv-btn--sm { height: 32px; padding-inline: var(--space-3); font-size: var(--text-sm); }
+.sv-btn--block { width: 100%; }
+
+.sv-btn--primary {
+  background: var(--brand-primary);
+  color: var(--brand-on-primary);
+  border-color: var(--brand-primary);
+}
+.sv-btn--primary:hover { background: var(--brand-primary-hover); border-color: var(--brand-primary-hover); }
+
+.sv-btn--secondary {
+  background: var(--surface-card);
+  color: var(--text-primary);
+  border-color: var(--border-default);
+}
+.sv-btn--secondary:hover { background: var(--surface-sunken); }
+
+.sv-btn--ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border-color: transparent;
+}
+.sv-btn--ghost:hover { background: var(--surface-sunken); color: var(--text-primary); }
+
+/* The ONE sanctioned gold action: the seal / attest action. */
+.sv-btn--accent {
+  background: var(--provenance-solid);
+  color: var(--on-provenance);
+  border-color: var(--provenance-solid);
+  box-shadow: var(--glow-gold);
+}
+.sv-btn--accent:hover { background: var(--provenance-strong); border-color: var(--provenance-strong); }
+
+/* ---- Inline text link with affordance ------------------- */
+.sv-link {
+  color: var(--text-link);
+  font-weight: var(--weight-medium);
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-1);
+}
+.sv-link::after { content: "\2192"; transition: transform var(--duration-fast) var(--ease-standard); }
+.sv-link:hover { text-decoration: none; }
+.sv-link:hover::after { transform: translateX(2px); }
+
+/* ============================================================
+   Eyebrow / overline (extends base .sv-eyebrow)
+   ============================================================ */
+.sv-eyebrow--brand { color: var(--text-link); }
+.sv-eyebrow--gold { color: var(--provenance); }
+
+/* ============================================================
+   Lifecycle badge — mirrors components/sil/LifecycleBadge.jsx
+   Exact, ordered vocabulary: draft → in_review → approved →
+   stale → archived. Never paraphrase the labels.
+   ============================================================ */
+.sv-lifecycle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  line-height: 1.3;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+.sv-lifecycle__dot { width: var(--space-2); height: var(--space-2); border-radius: 50%; flex: none; }
+
+.sv-lifecycle--draft    { color: var(--lc-draft-fg);    background: var(--lc-draft-bg); }
+.sv-lifecycle--draft    .sv-lifecycle__dot { background: var(--lc-draft-solid); }
+.sv-lifecycle--review   { color: var(--lc-review-fg);   background: var(--lc-review-bg); }
+.sv-lifecycle--review   .sv-lifecycle__dot { background: var(--lc-review-solid); }
+.sv-lifecycle--approved { color: var(--lc-approved-fg); background: var(--lc-approved-bg); }
+.sv-lifecycle--approved .sv-lifecycle__dot { background: var(--lc-approved-solid); }
+.sv-lifecycle--stale    { color: var(--lc-stale-fg);    background: var(--lc-stale-bg); }
+.sv-lifecycle--stale    .sv-lifecycle__dot { background: var(--lc-stale-solid); }
+.sv-lifecycle--archived { color: var(--lc-archived-fg); background: var(--lc-archived-bg); }
+.sv-lifecycle--archived .sv-lifecycle__dot { background: var(--lc-archived-solid); }
+
+/* ---- Seal chip (provenance) — gold proves --------------- */
+.sv-seal-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  background: var(--seal-surface);
+  border: var(--border-width-hairline) solid var(--seal-border);
+  color: var(--provenance-strong);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+}
+.sv-seal-chip__dot { width: var(--space-2); height: var(--space-2); border-radius: 50%; background: var(--provenance-solid); flex: none; }
+
+/* ============================================================
+   POV badge — the perspective indicator used in scenes.
+   Librarian · SME · Admin · User. Violet (action/people),
+   not gold (gold is reserved for proof).
+   ============================================================ */
+.sv-pov {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-caps);
+  color: var(--text-link);
+  background: var(--brand-primary-subtle);
+  border-radius: var(--radius-full);
+}
+.sv-pov__dot { width: var(--space-2); height: var(--space-2); border-radius: 50%; background: var(--brand-primary); flex: none; }
+
+/* ============================================================
+   Card (generic) — hairline + soft violet-ink shadow
+   ============================================================ */
+.sv-card {
+  background: var(--surface-card);
+  border: var(--border-width-hairline) solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+.sv-card__body { padding: var(--space-6); }
+
+/* ============================================================
+   Nav — partials/header.html (injected)
+   ============================================================ */
+.sv-nav {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  background: color-mix(in oklab, var(--surface-page) 86%, transparent);
+  -webkit-backdrop-filter: saturate(1.4) blur(8px);
+  backdrop-filter: saturate(1.4) blur(8px);
+  border-bottom: var(--border-width-hairline) solid var(--border-subtle);
+}
+.sv-nav__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  min-height: var(--topbar-height);
+  padding-block: var(--space-2);
+}
+.sv-nav__brand { display: inline-flex; align-items: center; flex: none; }
+.sv-nav__logo { height: 34px; width: auto; }
+.sv-nav__links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-left: auto;
+  flex-wrap: wrap;
+}
+.sv-nav__link {
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-base);
+  font-weight: var(--weight-medium);
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+}
+.sv-nav__link:hover { color: var(--text-primary); background: var(--surface-sunken); text-decoration: none; }
+.sv-nav__link[aria-current="page"] { color: var(--text-link); font-weight: var(--weight-semibold); }
+.sv-nav__cta { margin-left: var(--space-2); }
+
+/* ============================================================
+   Hero (home + scene intros) — uses the Moment ground.
+   ============================================================ */
+.sv-hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 80% at 50% -10%, var(--brand-primary-subtle), transparent 60%),
+    var(--surface-page);
+}
+.sv-hero__inner { padding-block: var(--space-24); max-width: var(--container-lg); }
+.sv-hero__title {
+  font-family: var(--font-display);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-4xl);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  max-width: 18ch;
+}
+.sv-hero__lead {
+  margin-top: var(--space-6);
+  font-size: var(--text-lg);
+  line-height: var(--leading-snug);
+  color: var(--text-secondary);
+  max-width: 56ch;
+}
+.sv-hero__actions { margin-top: var(--space-8); display: flex; gap: var(--space-3); flex-wrap: wrap; }
+
+/* ============================================================
+   Door grid (home) — the two doors + the nine problem doorways
+   ============================================================ */
+.sv-doors {
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) { .sv-doors { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1080px) { .sv-doors { grid-template-columns: repeat(3, 1fr); } }
+
+/* Big "two doors" pair */
+.sv-bigdoors { display: grid; gap: var(--space-5); grid-template-columns: 1fr; }
+@media (min-width: 840px) { .sv-bigdoors { grid-template-columns: repeat(2, 1fr); } }
+.sv-bigdoor {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-8);
+  background: var(--surface-card);
+  border: var(--border-width-hairline) solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--duration-base) var(--ease-standard),
+              box-shadow var(--duration-base) var(--ease-standard),
+              border-color var(--duration-base) var(--ease-standard);
+}
+.sv-bigdoor:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); border-color: var(--border-default); text-decoration: none; }
+.sv-bigdoor__title { font-family: var(--font-display); font-size: var(--text-xl); color: var(--text-primary); }
+.sv-bigdoor__desc { color: var(--text-secondary); }
+.sv-bigdoor__more { margin-top: auto; color: var(--text-link); font-weight: var(--weight-semibold); }
+
+/* ============================================================
+   Problem doorway card — components.core Card + the rule
+   ============================================================ */
+.sv-problem-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  height: 100%;
+  background: var(--surface-card);
+  border: var(--border-width-hairline) solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--duration-base) var(--ease-standard),
+              box-shadow var(--duration-base) var(--ease-standard),
+              border-color var(--duration-base) var(--ease-standard);
+}
+.sv-problem-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--border-brand); text-decoration: none; }
+.sv-problem-card__num {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  color: var(--text-tertiary);
+  letter-spacing: var(--tracking-wide);
+}
+.sv-problem-card__pain {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  line-height: var(--leading-snug);
+  color: var(--text-primary);
+}
+.sv-problem-card__fix { font-size: var(--text-sm); color: var(--text-secondary); }
+.sv-problem-card__more { margin-top: auto; color: var(--text-link); font-weight: var(--weight-semibold); font-size: var(--text-sm); }
+
+/* ============================================================
+   Media placeholder — BUILD_SPEC §6
+   Reserves final aspect-ratio via --aspect; stable data-media id.
+   ============================================================ */
+.sv-media {
+  margin: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.sv-media__placeholder {
+  position: relative;
+  aspect-ratio: var(--aspect, 16 / 9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-6);
+  text-align: center;
+  background:
+    repeating-linear-gradient(135deg, transparent 0 22px, color-mix(in oklab, var(--border-subtle) 60%, transparent) 22px 23px),
+    var(--surface-sunken);
+  border: var(--border-width-thick) dashed var(--border-default);
+  border-radius: var(--radius-lg);
+  color: var(--text-tertiary);
+}
+.sv-media__tag {
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-caps);
+  color: var(--text-secondary);
+}
+.sv-media__id { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-tertiary); }
+.sv-media__caption { margin-top: var(--space-2); font-size: var(--text-xs); color: var(--text-tertiary); }
+.sv-media--anim .sv-media__placeholder { border-style: solid; }
+
+/* ============================================================
+   Walkthrough scene — sv-scene
+   ============================================================ */
+.sv-scene { padding-block: var(--space-16); border-top: var(--border-width-hairline) solid var(--border-subtle); scroll-margin-top: calc(var(--topbar-height) + var(--space-4)); }
+.sv-scene__grid { display: grid; gap: var(--space-10); align-items: center; grid-template-columns: 1fr; }
+@media (min-width: 840px) { .sv-scene__grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 840px) { .sv-scene--flip .sv-scene__media { order: -1; } }
+.sv-scene__eyebrow { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4); flex-wrap: wrap; }
+.sv-scene__step { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-tertiary); }
+.sv-scene__title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+.sv-scene__body { margin-top: var(--space-5); color: var(--text-secondary); line-height: var(--leading-relaxed); }
+.sv-scene__body p + p { margin-top: var(--space-4); }
+.sv-scene__doorways { margin-top: var(--space-6); display: flex; flex-direction: column; gap: var(--space-2); }
+.sv-doorlink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  align-self: flex-start;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--text-link);
+  background: var(--brand-primary-subtle);
+  border-radius: var(--radius-sm);
+}
+.sv-doorlink:hover { text-decoration: none; background: var(--violet-200); }
+.sv-doorlink__tag { font-family: var(--font-mono); font-size: var(--text-2xs); color: var(--brand-primary); }
+
+/* ============================================================
+   Explainer — problem page template (BUILD_SPEC §7)
+   ============================================================ */
+.sv-explainer__header { padding-block: var(--space-12) var(--space-8); }
+.sv-explainer__pain {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  max-width: 20ch;
+}
+.sv-explainer__meta { margin-top: var(--space-5); display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center; }
+.sv-explainer__grid { display: grid; gap: var(--space-10); grid-template-columns: 1fr; }
+@media (min-width: 840px) { .sv-explainer__grid { grid-template-columns: 1.1fr 0.9fr; align-items: start; } }
+.sv-explainer__block + .sv-explainer__block { margin-top: var(--space-8); }
+.sv-explainer__h {
+  font-size: var(--text-xl);
+  font-family: var(--font-sans);
+  font-weight: var(--weight-semibold);
+}
+.sv-explainer__p { margin-top: var(--space-3); color: var(--text-secondary); line-height: var(--leading-relaxed); }
+.sv-explainer__back { margin-top: var(--space-10); padding-top: var(--space-6); border-top: var(--border-width-hairline) solid var(--border-subtle); }
+
+/* ============================================================
+   CTA block — partials/cta.html. Rendered on the Moment ground
+   (deep violet, brass glows) — the provenance promise made big.
+   ============================================================ */
+.sv-cta { padding-block: var(--space-20); }
+.sv-cta__inner { text-align: center; max-width: var(--container-md); margin-inline: auto; }
+.sv-cta__title {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+.sv-cta__lead { margin-top: var(--space-4); font-size: var(--text-lg); color: var(--text-secondary); }
+.sv-cta__actions { margin-top: var(--space-8); display: inline-flex; gap: var(--space-3); flex-wrap: wrap; justify-content: center; }
+
+/* ============================================================
+   Footer — partials/footer.html
+   ============================================================ */
+.sv-footer { border-top: var(--border-width-hairline) solid var(--border-subtle); padding-block: var(--space-12); }
+.sv-footer__inner { display: flex; gap: var(--space-8); flex-wrap: wrap; justify-content: space-between; align-items: flex-start; }
+.sv-footer__brand { display: flex; flex-direction: column; gap: var(--space-3); max-width: 36ch; }
+.sv-footer__logo { height: 32px; width: auto; }
+.sv-footer__tagline { font-size: var(--text-sm); color: var(--text-tertiary); }
+.sv-footer__cols { display: flex; gap: var(--space-12); flex-wrap: wrap; }
+.sv-footer__col { display: flex; flex-direction: column; gap: var(--space-2); }
+.sv-footer__col h2 { font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--text-tertiary); font-weight: var(--weight-semibold); margin-bottom: var(--space-1); }
+.sv-footer__link { font-size: var(--text-sm); color: var(--text-secondary); }
+.sv-footer__link:hover { color: var(--text-primary); }
+.sv-footer__legal { margin-top: var(--space-8); font-size: var(--text-xs); color: var(--text-tertiary); }
+
+/* ============================================================
+   Reveal-on-scroll (progressive enhancement; JS adds .is-in).
+   No motion when the user prefers reduced motion.
+   ============================================================ */
+@media (prefers-reduced-motion: no-preference) {
+  .sv-reveal { opacity: 0; transform: translateY(12px); transition: opacity var(--duration-slow) var(--ease-out), transform var(--duration-slow) var(--ease-out); }
+  .sv-reveal.is-in { opacity: 1; transform: none; }
+}
+
+/* ============================================================
+   Responsive type bumps
+   ============================================================ */
+@media (min-width: 840px) {
+  .sv-hero__title { font-size: var(--text-5xl); }
+  .sv-explainer__pain { font-size: var(--text-4xl); }
+  .sv-section__title, .sv-scene__title { font-size: var(--text-3xl); }
+}
+
+/* ============================================================
+   Include-failure fallback — if a [data-include] partial can't
+   be fetched (e.g. opened via file:// or a 404), app.js injects
+   .sv-include-error here so the failure is visible and recoverable.
+   ============================================================ */
+.sv-include-error {
+  margin: 0;
+  padding: var(--space-3) var(--space-6);
+  background: var(--status-danger-bg);
+  color: var(--status-danger-fg);
+  font-size: var(--text-sm);
+  text-align: center;
+}
+.sv-include-error a { color: var(--status-danger-fg); font-weight: var(--weight-semibold); }

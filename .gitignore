@@ -1,0 +1,16 @@
+# ── Site repo (GitHub Pages) ───────────────────────────────
+# Everything here is published raw by Pages. Keep it lean.
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Video / animation PRODUCTION workspace.
+# Kept inside the repo for full project context, but NOT part of the
+# published site — it is its own separate git repo (backup/redundancy).
+# Only its OUTPUTS ship: rendered clips are copied into assets/media/
+# (which IS tracked). See Videos/README.md and CLAUDE.md.
+Videos/
+
+# Node (the site itself has no build step; this is just a guard)
+node_modules/

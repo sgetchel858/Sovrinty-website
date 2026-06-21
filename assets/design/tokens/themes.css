@@ -1,0 +1,89 @@
+/* ============================================================
+   SOVRINT — THEMES
+   The system ships TWO surfaces, by rule:
+
+   · PRODUCT  (default :root, light)  — "B".  The everyday app.
+       Gold is co-primary: it appears as SURFACES (the sealed
+       answer header, the preferred citation, the audit chain),
+       while violet owns ACTION. Light ground for all-day use.
+
+   · MOMENT   ([data-theme="moment"], deep violet) — "C".
+       Reserved for high-ceremony surfaces where the provenance
+       promise should feel weighty: sign-in, marketing hero,
+       the audit / Golden-Spike views, slide decks. Brass glows
+       on a near-black violet ground. NOT for dense, all-day work.
+
+   Apply Moment by putting the attribute on any container:
+       <body data-theme="moment"> … </body>
+       <section data-theme="moment"> … </section>
+
+   Components reference the semantic tokens below, so the SAME
+   markup renders correctly on either ground — a sealed card is
+   brass-on-white in Product and brass-glow-on-violet in Moment
+   with no code change.
+   ============================================================ */
+
+[data-theme="moment"] {
+  color-scheme: dark;
+
+  /* Make applying the attribute actually paint the ground. */
+  background: var(--surface-page);
+  color: var(--text-primary);
+
+  /* ---- Surfaces ---- */
+  --surface-page:    var(--violet-950);
+  --surface-card:    #371641;   /* lifted violet panel */
+  --surface-raised:  #41204c;
+  --surface-sunken:  #220e29;
+  --surface-inverse: var(--neutral-0);
+  --surface-overlay: rgba(8, 4, 11, 0.62);
+
+  /* ---- Text ---- */
+  --text-primary:   #ffffff;
+  --text-secondary: var(--violet-200);
+  --text-tertiary:  var(--violet-300);
+  --text-disabled:  var(--violet-500);
+  --text-on-brand:  var(--violet-950);
+  --text-link:      var(--violet-200);
+  --text-accent:    var(--gold-300);
+
+  /* ---- Borders ---- */
+  --border-subtle:  rgba(255, 255, 255, 0.08);
+  --border-default: rgba(216, 168, 219, 0.22);
+  --border-strong:  rgba(216, 168, 219, 0.36);
+  --border-brand:   var(--violet-500);
+  --ring-focus:     color-mix(in oklab, var(--violet-300) 60%, transparent);
+
+  /* ---- Action on the Moment ground ----
+     The Moment surface IS the provenance promise, so here the
+     primary action is brass — the one sanctioned place gold
+     leads. (In Product, primary stays violet; gold never fills
+     an ordinary action.) Nav / links stay violet for contrast. */
+  --brand-primary:        var(--gold-500);
+  --brand-primary-hover:  var(--gold-400);
+  --brand-primary-active: var(--gold-600);
+  --brand-primary-subtle: rgba(220, 187, 102, 0.14);
+  --brand-on-primary:     var(--violet-950);
+
+  /* ---- Provenance (gold) — glows brighter on dark ---- */
+  --provenance:        var(--gold-300);
+  --provenance-strong: var(--gold-200);
+  --provenance-solid:  var(--gold-500);
+  --on-provenance:     var(--violet-950);
+  --seal-surface:        rgba(220, 187, 102, 0.10);
+  --seal-surface-strong: rgba(220, 187, 102, 0.16);
+  --seal-border:       var(--gold-400);
+  --seal-header-bg:    rgba(220, 187, 102, 0.12); /* a tint, not solid brass */
+  --seal-header-fg:    var(--gold-300);
+  --provenance-tint:   rgba(220, 187, 102, 0.12);
+  --audit-rail:        rgba(220, 187, 102, 0.40);
+  --audit-node:        var(--gold-400);
+  --audit-node-ring:   rgba(220, 187, 102, 0.24);
+
+  /* Focus selection on dark */
+}
+
+[data-theme="moment"] ::selection {
+  background: var(--gold-400);
+  color: var(--violet-950);
+}

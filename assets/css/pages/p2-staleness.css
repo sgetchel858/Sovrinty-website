@@ -1,0 +1,140 @@
+/* ============================================================
+   P2 — STALENESS RIPPLE  (the data-anim="p2-media" hero interactive)
+   Token-only. Reuses the design system's lifecycle palette
+   (approved → stale) and the gold provenance / ledger rail +
+   Golden Spike. Motion is neutralized for prefers-reduced-motion
+   by the global rule in base.css; the JS also skips auto-play and
+   staggering there, so the control still works instantly.
+
+   Brand rule honored: gold is the provenance chain (the links/
+   rail/spike — proof) and the Re-certify *seal* action only;
+   violet/neutral carries the ordinary "Change the source" action.
+   ============================================================ */
+
+.sv-ripple {
+  position: relative;
+  aspect-ratio: var(--aspect, 16 / 9);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  background: var(--surface-card);
+  border: var(--border-width-hairline) solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  /* 16/9 acts as a FLOOR: content can grow taller (e.g. the narrow desktop
+     aside) instead of being clipped. Do not use overflow:hidden here. */
+  overflow: visible;
+}
+
+.sv-ripple__stage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---- Source node ---------------------------------------- */
+.sv-ripple__source {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-2) var(--space-4);
+  background: var(--surface-raised);
+  border: var(--border-width-hairline) solid var(--border-default);
+  border-radius: var(--radius-md);
+  text-align: center;
+  z-index: 1;
+  transition: border-color var(--duration-base) var(--ease-standard),
+              background var(--duration-base) var(--ease-standard);
+}
+.sv-ripple__source-label { font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--text-primary); }
+.sv-ripple__source-id { font-family: var(--font-mono); font-size: var(--text-2xs); color: var(--text-tertiary); }
+.sv-ripple__source-flag {
+  margin-top: var(--space-1);
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-semibold);
+  color: var(--lc-stale-fg);
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--ease-standard);
+}
+.sv-ripple.is-changed .sv-ripple__source { border-color: var(--lc-stale-solid); background: var(--lc-stale-bg); }
+.sv-ripple.is-changed .sv-ripple__source-flag { opacity: 1; }
+
+/* ---- Connector band: trunk → rail → drops (the ledger chain) ---- */
+.sv-ripple__links { position: relative; width: 100%; height: var(--space-10); flex: none; }
+.sv-ripple__trunk,
+.sv-ripple__rail,
+.sv-ripple__drop {
+  position: absolute;
+  background: var(--audit-rail);
+  transition: background var(--duration-base) var(--ease-standard);
+}
+.sv-ripple__trunk { left: 50%; top: 0; width: var(--border-width-heavy); height: 50%; transform: translateX(-50%); }
+.sv-ripple__rail  { left: 16.66%; right: 16.66%; top: 50%; height: var(--border-width-heavy); }
+.sv-ripple__drop  { top: 50%; bottom: 0; width: var(--border-width-heavy); transform: translateX(-50%); }
+.sv-ripple__drop--1 { left: 16.66%; }
+.sv-ripple__drop--2 { left: 50%; }
+.sv-ripple__drop--3 { left: 83.33%; }
+
+/* Golden Spike — where the chain locks the record */
+.sv-ripple__spike {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: var(--space-3); height: var(--space-3);
+  transform: translate(-50%, -50%) rotate(45deg);
+  background: var(--provenance-solid);
+  border-radius: var(--radius-xs);
+  box-shadow: var(--glow-gold);
+  z-index: 1;
+}
+
+/* As the change propagates, only the DROPS to the affected records warm to
+   amber — the chain of custody (trunk / rail / Golden Spike) stays gold so
+   the provenance/proof signal is never spent ("gold proves"). */
+.sv-ripple.is-rippling .sv-ripple__drop { background: var(--lc-stale-solid); }
+
+/* ---- Records -------------------------------------------- */
+.sv-ripple__records { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); width: 100%; }
+.sv-ripple__record {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  text-align: center;
+  background: var(--surface-card);
+  border: var(--border-width-hairline) solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  transition: border-color var(--duration-base) var(--ease-standard),
+              transform var(--duration-base) var(--ease-standard);
+}
+.sv-ripple__record-title { font-size: var(--text-xs); color: var(--text-secondary); line-height: var(--leading-snug); }
+.sv-ripple__record .sv-lifecycle {
+  transition: background var(--duration-base) var(--ease-standard),
+              color var(--duration-base) var(--ease-standard);
+}
+.sv-ripple__record.is-stale  { border-color: var(--lc-stale-solid); }
+.sv-ripple__record.is-recert { border-color: var(--lc-approved-solid); }
+
+/* ---- Controls + caption --------------------------------- */
+.sv-ripple__controls { display: flex; gap: var(--space-2); flex-wrap: wrap; justify-content: center; flex: none; }
+.sv-ripple__caption {
+  margin: 0;
+  text-align: center;
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+  min-height: var(--space-5);
+  flex: none;
+}
+
+/* Tighten for short/narrow renders of the 16/9 box */
+@media (max-width: 560px) {
+  .sv-ripple { padding: var(--space-4); gap: var(--space-3); }
+  .sv-ripple__links { height: var(--space-8); }
+  .sv-ripple__record-title { display: none; } /* keep the lifecycle badges, drop titles */
+}

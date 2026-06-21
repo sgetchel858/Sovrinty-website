@@ -1,0 +1,9 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Golden Spike">
+  <path d="M60 14 L68 30 L64 92 L60 108 L56 92 L52 30 Z" fill="#b6882c"></path>
+  <path d="M60 14 L68 30 L64 92 L60 108 L56 92 L52 30 Z" fill="none" stroke="#7c581f" stroke-width="1.2"></path>
+  <ellipse cx="60" cy="26" rx="11" ry="6" fill="#cca33f" stroke="#7c581f" stroke-width="1.2"></ellipse>
+  <ellipse cx="60" cy="24" rx="11" ry="6" fill="#dcbb66" stroke="#7c581f" stroke-width="1.2"></ellipse>
+  <line x1="56" y1="44" x2="64" y2="44" stroke="#7c581f" stroke-width="1" opacity="0.5"></line>
+  <line x1="56" y1="60" x2="63" y2="60" stroke="#7c581f" stroke-width="1" opacity="0.5"></line>
+  <line x1="57" y1="76" x2="63" y2="76" stroke="#7c581f" stroke-width="1" opacity="0.5"></line>
+</svg>

@@ -1,0 +1,21 @@
+/* ============================================================
+   SOVRINTY — DESIGN TOKENS (entry point)
+   IMPORTED FROM THE DESIGN FILE — DO NOT EDIT BY HAND.
+
+   Source of truth: the claude.ai "Sovrinty Design System"
+   project (ca731c46-7fc3-4231-a2ed-30a58023fd34). The files
+   under assets/design/tokens/ are copied verbatim from there;
+   re-sync from the design system rather than editing locally.
+
+   base.css and components.css may ONLY reference these custom
+   properties (var(--…)) — never a literal hex, font name, or
+   spacing number. If a token is missing, add a TODO and ask;
+   do not invent a value.
+   ============================================================ */
+
+@import "../design/tokens/fonts.css";
+@import "../design/tokens/colors.css";
+@import "../design/tokens/themes.css";
+@import "../design/tokens/typography.css";
+@import "../design/tokens/spacing.css";
+@import "../design/tokens/elevation.css";
