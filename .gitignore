@@ -15,6 +15,9 @@ Videos/
 # Node (the site itself has no build step; this is just a guard)
 node_modules/
 
+# Local Claude Code data (settings, session state) — not for the public repo
+.claude/
+
 # Internal docs / planning material / prototypes — kept LOCAL only, not
 # published to the public repo or Pages (decision: site-only deploy). They
 # stay on disk; add a private backup repo if you want version history.
