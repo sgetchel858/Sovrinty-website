@@ -388,6 +388,14 @@
 .sv-media__id { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-tertiary); }
 .sv-media__caption { margin-top: var(--space-2); font-size: var(--text-xs); color: var(--text-tertiary); }
 .sv-media--anim .sv-media__placeholder { border-style: solid; }
+/* Real video swapped in for a placeholder: fills the reserved aspect box. */
+.sv-media__video {
+  display: block;
+  width: 100%;
+  aspect-ratio: var(--aspect, 16 / 9);
+  object-fit: cover;
+  background: var(--surface-sunken);
+}
 
 /* ============================================================
    Walkthrough scene — sv-scene

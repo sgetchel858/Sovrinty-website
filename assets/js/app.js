@@ -74,9 +74,13 @@ async function resolveIncludes() {
  *  links are covered too. Skips protocol-relative ("//…") URLs. */
 function rewriteLinks(root) {
   const sel =
-    'a[href^="/"], area[href^="/"], img[src^="/"], source[src^="/"], link[href^="/"]';
+    'a[href^="/"], area[href^="/"], img[src^="/"], source[src^="/"], track[src^="/"], video[poster^="/"], link[href^="/"]';
   root.querySelectorAll(sel).forEach((el) => {
-    const attr = el.hasAttribute("href") ? "href" : "src";
+    const attr = el.hasAttribute("href")
+      ? "href"
+      : el.hasAttribute("poster")
+      ? "poster"
+      : "src";
     const val = el.getAttribute(attr);
     if (!val || val[0] !== "/" || val[1] === "/") return;
     el.setAttribute(attr, abs(val));
