@@ -17,7 +17,7 @@ lazy-loaded, with a captions `<track>` slot. Animations must honor
 
 | id | type | scene | aspect | target length | status | notes |
 |---|---|---|---|---|---|---|
-| s0-framing        | anim  | S0 | 16/9 | —    | **live** (CSS/JS) | the unproven answer — confident reply with a hollow "unverified" seal. `pages/walkthrough.css` + `js/modules/walkthrough-scenes.js` |
+| s0-framing        | anim  | S0 | 16/9 | —    | **live** (CSS/JS) | the unproven answer — a chat window: user (right/violet) asks, generic "Assistant" (left/grey) answers confidently from nowhere with typing dots, user pushes back, it folds to "I don't know" + a hollow amber "unverified" seal. `pages/walkthrough.css` + `js/modules/walkthrough-scenes.js` |
 | s1-single-source  | anim  | S1 | 16/9 | —    | **live** (CSS/JS) | scattered sources → a forming gold chain → one sealed "Governed source of truth" |
 | s2-mission-control| video | S2 | 16/9 | ~30s | approved | Librarian detects + assigns; health → 100%. Remotion build in `Videos/Scenes/s2-mission-control` → `assets/media/{video,poster,captions}/s2-mission-control.*` |
 | s3-sme-desk       | video | S3 | 16/9 | ~20s | approved | SME inbox, complete in Microsoft Teams; own screen → 100%. Remotion build in `Videos/Scenes/s3-sme-desk` → `assets/media/{video,poster,captions}/s3-sme-desk.*` |

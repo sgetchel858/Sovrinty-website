@@ -36,38 +36,139 @@
 .sv-d4 { --d: 400ms; } .sv-d5 { --d: 500ms; } .sv-d6 { --d: 600ms; }
 
 /* ============================================================
-   S0 · The unproven answer
+   S0 · The unproven answer — a chat that can't back itself up
+   A four-turn conversation in a chat window: the user (right,
+   violet) asks, a generic assistant (left, grey) answers
+   confidently from nowhere, the user pushes back, and it folds to
+   "I don't know" — then the answer is stamped UNVERIFIED.
+   Amber (the stale/warning hue), never gold: nothing here is proven.
+   Tempo lives in one place below; rows reveal via .sv-rise, and a
+   typing indicator bridges each turn so it reads like live chat.
    ============================================================ */
-.sv-sa--s0 { flex-direction: column; align-items: stretch; gap: var(--space-3); }
-.sv-sa-q {
-  align-self: flex-end;
-  max-width: 72%;
-  padding: var(--space-2) var(--space-4);
-  background: var(--brand-primary-subtle);
-  color: var(--text-link);
-  border-radius: var(--radius-md) var(--radius-md) var(--radius-xs) var(--radius-md);
-  font-size: var(--text-sm);
+.sv-sa--s0 {
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 0;
+  padding: 0;
 }
-.sv-sa-a {
-  align-self: flex-start;
-  width: 82%;
+
+/* Window header — frames it unmistakably as a chat. */
+.sv-chat__head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: var(--border-width-hairline) solid var(--border-subtle);
+}
+.sv-chat__id { display: flex; flex-direction: column; line-height: var(--leading-tight); }
+.sv-chat__name { font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--text-primary); }
+.sv-chat__sub { font-size: var(--text-2xs); color: var(--text-tertiary); }
+
+/* The message thread. */
+.sv-chat__thread {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--space-3);
   padding: var(--space-4);
-  background: var(--surface-raised);
-  border: var(--border-width-hairline) solid var(--border-subtle);
-  border-radius: var(--radius-md) var(--radius-md) var(--radius-md) var(--radius-xs);
 }
-.sv-sa-line { height: var(--space-2); border-radius: var(--radius-full); background: var(--neutral-200); }
-.sv-sa-line--90 { width: 90%; }
-.sv-sa-line--100 { width: 100%; }
-.sv-sa-line--60 { width: 60%; }
+
+/* A row carries an avatar + bubble; direction sets the side. */
+.sv-chatrow { display: flex; align-items: flex-start; gap: var(--space-2); }
+.sv-chatrow--out { justify-content: flex-end; }
+.sv-chatrow--in { justify-content: flex-start; }
+.sv-chat__col { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); max-width: 80%; }
+
+/* Avatars — violet human, neutral generic assistant. */
+.sv-chat__avatar {
+  flex: none;
+  width: var(--space-6);
+  height: var(--space-6);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+}
+.sv-chat__avatar svg { width: 62%; height: 62%; fill: currentColor; }
+.sv-chat__avatar--ai {
+  background: var(--surface-sunken);
+  border: var(--border-width-hairline) solid var(--border-subtle);
+  color: var(--text-tertiary);
+}
+.sv-chat__avatar--user {
+  background: var(--brand-primary);
+  color: var(--brand-on-primary);
+}
+
+/* Bubbles — violet outgoing (right), grey incoming (left), each
+   with one squared corner for the tail. */
+.sv-chat__bubble {
+  max-width: 80%;
+  min-width: 0;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+  border-radius: var(--radius-lg);
+}
+.sv-chat__col .sv-chat__bubble { max-width: 100%; }
+.sv-chat__bubble--out {
+  background: var(--brand-primary-subtle);
+  color: var(--violet-900);
+  border-bottom-right-radius: var(--radius-xs);
+}
+.sv-chat__bubble--in {
+  background: var(--surface-sunken);
+  color: var(--text-primary);
+  border-bottom-left-radius: var(--radius-xs);
+}
+
+/* Typing dots and the answer share one grid cell, so the bubble is
+   sized to its final text from the start — the dots give way to the
+   answer with no reflow. */
+.sv-sa-msg__body { display: grid; }
+.sv-sa-msg__body > * { grid-area: 1 / 1; }
+.sv-sa-msg__text {
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--ease-out) var(--d, 0ms);
+}
+.sv-sa--s0.is-in .sv-sa-msg__text { opacity: 1; }
+
+.sv-sa-typing {
+  align-self: center;
+  justify-self: start;
+  display: inline-flex;
+  gap: var(--space-1);
+  opacity: 0;
+}
+.sv-sa-typing i {
+  width: var(--space-2);
+  height: var(--space-2);
+  border-radius: var(--radius-full);
+  background: var(--text-tertiary);
+}
+.sv-sa--s0.is-in .sv-sa-typing {
+  animation: sv-sa-typing-window var(--tw, 700ms) var(--ease-standard) var(--td, 0ms) 1 both;
+}
+.sv-sa--s0.is-in .sv-sa-typing i { animation: sv-sa-typing-dot 1.1s var(--ease-standard) infinite; }
+.sv-sa-typing i:nth-child(2) { animation-delay: 0.15s; }
+.sv-sa-typing i:nth-child(3) { animation-delay: 0.3s; }
+@keyframes sv-sa-typing-window {
+  0%   { opacity: 0; }
+  15%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes sv-sa-typing-dot {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30%           { transform: translateY(calc(var(--space-1) * -1)); opacity: 1; }
+}
+
+/* The unverified stamp on the assistant's final admission. */
 .sv-sa-doubt {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  margin-top: var(--space-1);
+  margin-top: var(--space-2);
   font-size: var(--text-2xs);
   font-weight: var(--weight-semibold);
   color: var(--lc-stale-fg);
@@ -83,11 +184,28 @@
   color: var(--lc-stale-fg);
   font-family: var(--font-mono);
 }
-.sv-sa--s0.is-in .sv-sa-doubt__seal { animation: sv-sa-doubt 1.8s var(--ease-standard) 800ms 2; }
+.sv-sa--s0.is-in .sv-sa-doubt__seal { animation: sv-sa-doubt 1.8s var(--ease-standard) 4100ms 2; }
 @keyframes sv-sa-doubt {
   0%, 100% { transform: scale(1); opacity: 0.65; }
   50% { transform: scale(1.12); opacity: 1; }
 }
+
+/* Chat tempo — the single source of timing for the four turns.
+   Each AI bubble: bubble rises → typing window → answer fades in. */
+.sv-sa--s0 .sv-sa-msg--u1 { --d: 150ms; }
+.sv-sa--s0 .sv-sa-msg--a1 { --d: 750ms; }
+.sv-sa--s0 .sv-sa-msg--a1 .sv-sa-typing { --td: 750ms; --tw: 700ms; }
+.sv-sa--s0 .sv-sa-msg--a1 .sv-sa-msg__text { --d: 1450ms; }
+.sv-sa--s0 .sv-sa-msg--u2 { --d: 2050ms; }
+.sv-sa--s0 .sv-sa-msg--a2 { --d: 2650ms; }
+.sv-sa--s0 .sv-sa-msg--a2 .sv-sa-typing { --td: 2650ms; --tw: 700ms; }
+.sv-sa--s0 .sv-sa-msg--a2 .sv-sa-msg__text { --d: 3350ms; }
+.sv-sa--s0 .sv-sa-msg--a2 .sv-sa-doubt { --d: 3700ms; }
+
+/* Placeholder text lines — shared with S4's answer block. */
+.sv-sa-line { height: var(--space-2); border-radius: var(--radius-full); background: var(--neutral-200); }
+.sv-sa-line--100 { width: 100%; }
+.sv-sa-line--60 { width: 60%; }
 
 /* ============================================================
    S1 · Scattered sources → one governed source of truth
