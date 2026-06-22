@@ -51,12 +51,56 @@
           <div class="sv-scene__media">
             <figure class="sv-media sv-media--anim" data-anim="s0-framing" style="--aspect:16/9">
               <div class="sv-sa sv-sa--s0" data-scene-anim="s0" aria-hidden="true">
-                <div class="sv-sa-q sv-rise sv-d1">What&rsquo;s our policy on data retention?</div>
-                <div class="sv-sa-a sv-rise sv-d3">
-                  <span class="sv-sa-line sv-sa-line--90"></span>
-                  <span class="sv-sa-line sv-sa-line--100"></span>
-                  <span class="sv-sa-line sv-sa-line--60"></span>
-                  <span class="sv-sa-doubt"><span class="sv-sa-doubt__seal">?</span>unverified</span>
+                <!-- Avatar glyphs (sparkle = generic assistant, silhouette = the human). -->
+                <svg width="0" height="0" aria-hidden="true" focusable="false">
+                  <symbol id="sv-i-ai" viewBox="0 0 24 24"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/></symbol>
+                  <symbol id="sv-i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M12 13c-4.4 0-8 2.9-8 6.5V21h16v-1.5c0-3.6-3.6-6.5-8-6.5z"/></symbol>
+                </svg>
+
+                <!-- Chat window header -->
+                <div class="sv-chat__head">
+                  <span class="sv-chat__avatar sv-chat__avatar--ai"><svg viewBox="0 0 24 24"><use href="#sv-i-ai"/></svg></span>
+                  <span class="sv-chat__id">
+                    <span class="sv-chat__name">Assistant</span>
+                    <span class="sv-chat__sub">general-purpose model</span>
+                  </span>
+                </div>
+
+                <!-- Thread -->
+                <div class="sv-chat__thread">
+                  <!-- The user asks -->
+                  <div class="sv-chatrow sv-chatrow--out sv-sa-msg--u1 sv-rise">
+                    <span class="sv-chat__bubble sv-chat__bubble--out">What&rsquo;s our policy on data retention?</span>
+                    <span class="sv-chat__avatar sv-chat__avatar--user"><svg viewBox="0 0 24 24"><use href="#sv-i-user"/></svg></span>
+                  </div>
+                  <!-- A generic assistant answers confidently, from nowhere -->
+                  <div class="sv-chatrow sv-chatrow--in sv-sa-msg--a1 sv-rise">
+                    <span class="sv-chat__avatar sv-chat__avatar--ai"><svg viewBox="0 0 24 24"><use href="#sv-i-ai"/></svg></span>
+                    <span class="sv-chat__bubble sv-chat__bubble--in">
+                      <span class="sv-sa-msg__body">
+                        <span class="sv-sa-typing"><i></i><i></i><i></i></span>
+                        <span class="sv-sa-msg__text">Most companies keep customer data for about 12&ndash;24 months, then archive or delete it. You may want to check with your team to confirm.</span>
+                      </span>
+                    </span>
+                  </div>
+                  <!-- The user pushes back -->
+                  <div class="sv-chatrow sv-chatrow--out sv-sa-msg--u2 sv-rise">
+                    <span class="sv-chat__bubble sv-chat__bubble--out">Is that really our policy?</span>
+                    <span class="sv-chat__avatar sv-chat__avatar--user"><svg viewBox="0 0 24 24"><use href="#sv-i-user"/></svg></span>
+                  </div>
+                  <!-- It folds — and the answer is stamped unverified -->
+                  <div class="sv-chatrow sv-chatrow--in sv-sa-msg--a2 sv-rise">
+                    <span class="sv-chat__avatar sv-chat__avatar--ai"><svg viewBox="0 0 24 24"><use href="#sv-i-ai"/></svg></span>
+                    <span class="sv-chat__col">
+                      <span class="sv-chat__bubble sv-chat__bubble--in">
+                        <span class="sv-sa-msg__body">
+                          <span class="sv-sa-typing"><i></i><i></i><i></i></span>
+                          <span class="sv-sa-msg__text">I don&rsquo;t know.</span>
+                        </span>
+                      </span>
+                      <span class="sv-sa-doubt sv-rise"><span class="sv-sa-doubt__seal">?</span>unverified</span>
+                    </span>
+                  </div>
                 </div>
               </div>
             </figure>
@@ -128,7 +172,7 @@
                      poster="/assets/media/poster/s2-mission-control.jpg"
                      aria-label="Mission Control — the Knowledge Librarian's view">
                 <source src="/assets/media/video/s2-mission-control.mp4" type="video/mp4">
-                <track kind="captions" src="/assets/media/captions/s2-mission-control.vtt" srclang="en" label="English" default>
+                <track kind="captions" src="/assets/media/captions/s2-mission-control.vtt" srclang="en" label="English">
                 Your browser doesn&rsquo;t support embedded video.
                 <a href="/assets/media/video/s2-mission-control.mp4">Download the clip</a>.
               </video>
@@ -163,7 +207,7 @@
                      poster="/assets/media/poster/s3-sme-desk.jpg"
                      aria-label="The SME's desk — a ranked review queue completed in Microsoft Teams">
                 <source src="/assets/media/video/s3-sme-desk.mp4" type="video/mp4">
-                <track kind="captions" src="/assets/media/captions/s3-sme-desk.vtt" srclang="en" label="English" default>
+                <track kind="captions" src="/assets/media/captions/s3-sme-desk.vtt" srclang="en" label="English">
                 Your browser doesn&rsquo;t support embedded video.
                 <a href="/assets/media/video/s3-sme-desk.mp4">Download the clip</a>.
               </video>
