@@ -75,6 +75,7 @@ async function resolveIncludes() {
 function rewriteLinks(root) {
   const sel =
     'a[href^="/"], area[href^="/"], img[src^="/"], source[src^="/"], track[src^="/"], video[poster^="/"], link[href^="/"]';
+  const mediaToReload = new Set();
   root.querySelectorAll(sel).forEach((el) => {
     const attr = el.hasAttribute("href")
       ? "href"
@@ -84,7 +85,16 @@ function rewriteLinks(root) {
     const val = el.getAttribute(attr);
     if (!val || val[0] !== "/" || val[1] === "/") return;
     el.setAttribute(attr, abs(val));
+    // A <video>'s <source>/<track>/poster are fetched at PARSE time, before this
+    // rewrite runs. Changing the attribute afterward does NOT make the browser
+    // retry an already-failed source — that needs an explicit load(). Authored
+    // media paths should therefore be depth-relative so they resolve correctly
+    // at parse time (see walkthrough.html); this reload is only a safety net for
+    // any root-relative media that slips through.
+    const video = el.tagName === "VIDEO" ? el : el.closest("video");
+    if (video) mediaToReload.add(video);
   });
+  mediaToReload.forEach((v) => v.load());
 }
 
 /** Mark the nav link matching the current page. A link may declare
