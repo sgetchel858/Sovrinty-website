@@ -209,59 +209,184 @@
 
 /* ============================================================
    S1 · Scattered sources → one governed source of truth
-   (a forming chain; mirrors the P2 ledger grammar, inverted)
+   Documents drop into three scattered boxes (SharePoint / Box /
+   Shared Drives); a gold chain draws itself from the sources down
+   to the core; gold beads stream down the chain and are absorbed
+   into the sealed "Sovrinty" destination. Plays once on .is-in.
+   GOLD PROVES: gold carries the forming chain + the seal; the raw
+   documents stay neutral until they're consolidated.
+   Bespoke step timing is in literal ms (as in S0's choreography);
+   every color/size/space is a token.
    ============================================================ */
-.sv-sa--s1 { flex-direction: column; gap: 0; }
-.sv-sa-s1__chips { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-2); width: 100%; }
-.sv-sa-chip {
-  justify-self: center;
-  padding: var(--space-1) var(--space-3);
+.sv-sa--s1 { flex-direction: column; gap: var(--space-2); justify-content: center; }
+
+/* ---- The three scattered sources ------------------------- */
+.sv-sa-s1__sources {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  width: 100%;
+  align-items: end;
+}
+.sv-sa-s1-box {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-2);
   background: var(--surface-raised);
   border: var(--border-width-hairline) solid var(--border-default);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-xs);
+}
+.sv-sa-s1-box__label {
+  text-align: center;
   font-family: var(--font-mono);
   font-size: var(--text-2xs);
   color: var(--text-secondary);
   white-space: nowrap;
 }
+/* The drop slot — a sunken tray the documents fall into (clipped). */
+.sv-sa-s1-box__stack {
+  position: relative;
+  height: var(--space-10);
+  background: var(--surface-sunken);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+/* A document — a plain page with two faint lines. Neutral: raw,
+   ungoverned content until it's consolidated. Static tilt via
+   `rotate`; the drop animates `translate` only, so one keyframe
+   serves every doc. */
+.sv-sa-doc {
+  position: absolute;
+  left: 50%;
+  bottom: var(--space-1);
+  width: var(--space-6);
+  height: var(--space-8);
+  margin-left: calc(var(--space-6) / -2);
+  background: var(--surface-card);
+  border: var(--border-width-hairline) solid var(--border-default);
+  border-radius: var(--radius-xs);
+  box-shadow: var(--shadow-xs);
+  opacity: 0;
+  translate: 0 -180%;   /* starts above the slot, clipped by overflow */
+}
+.sv-sa-doc::before,
+.sv-sa-doc::after {
+  content: "";
+  position: absolute;
+  left: var(--space-1);
+  height: var(--border-width-heavy);
+  border-radius: var(--radius-full);
+  background: var(--neutral-200);
+}
+.sv-sa-doc::before { top: var(--space-2); right: var(--space-1); }
+.sv-sa-doc::after  { top: var(--space-3); right: var(--space-3); }  /* shorter 2nd line */
+.sv-sa-doc--a { margin-left: calc(var(--space-6) / -2 - var(--space-1)); rotate: -5deg; }
+.sv-sa-doc--b { margin-left: calc(var(--space-6) / -2 + var(--space-1)); rotate: 4deg; }
+
+.sv-sa--s1.is-in .sv-sa-doc { animation: sv-s1-drop 560ms var(--ease-out) var(--dd, 0ms) both; }
+@keyframes sv-s1-drop {
+  0%   { translate: 0 -180%; opacity: 0; }
+  35%  { opacity: 1; }
+  100% { translate: 0 0; opacity: 1; }
+}
+/* Documents cascade in left → right, two per box. */
+.sv-sa-s1-box--1 .sv-sa-doc--a { --dd: 380ms; }
+.sv-sa-s1-box--1 .sv-sa-doc--b { --dd: 520ms; }
+.sv-sa-s1-box--2 .sv-sa-doc--a { --dd: 520ms; }
+.sv-sa-s1-box--2 .sv-sa-doc--b { --dd: 660ms; }
+.sv-sa-s1-box--3 .sv-sa-doc--a { --dd: 660ms; }
+.sv-sa-s1-box--3 .sv-sa-doc--b { --dd: 800ms; }
+
+/* ---- The chain (drops → rail → trunk) draws itself in gold --- */
 .sv-sa-s1__links { position: relative; width: 100%; height: var(--space-10); flex: none; }
-.sv-sa-s1__links span {
+.sv-sa-s1-drop,
+.sv-sa-s1-rail,
+.sv-sa-s1-trunk {
   position: absolute;
   background: var(--border-subtle);
-  transition: background var(--duration-base) var(--ease-standard) var(--d, 0ms);
+  transition: background var(--duration-base) var(--ease-standard) var(--ld, 0ms),
+              transform var(--duration-slow) var(--ease-out) var(--ld, 0ms);
 }
-.sv-sa--s1.is-in .sv-sa-s1__links span { background: var(--audit-rail); }
-.sv-sa-s1-drop { top: 0; height: 50%; width: var(--border-width-heavy); transform: translateX(-50%); }
+.sv-sa-s1-drop  { top: 0; height: 50%; width: var(--border-width-heavy); transform: translateX(-50%) scaleY(0); transform-origin: top; --ld: 950ms; }
 .sv-sa-s1-drop--1 { left: 16.66%; } .sv-sa-s1-drop--2 { left: 50%; } .sv-sa-s1-drop--3 { left: 83.33%; }
-.sv-sa-s1-rail { left: 16.66%; right: 16.66%; top: 50%; height: var(--border-width-heavy); }
-.sv-sa-s1-trunk { left: 50%; top: 50%; bottom: 0; width: var(--border-width-heavy); transform: translateX(-50%); }
+.sv-sa-s1-rail  { left: 16.66%; right: 16.66%; top: 50%; height: var(--border-width-heavy); transform: scaleX(0); transform-origin: center; --ld: 1150ms; }
+.sv-sa-s1-trunk { left: 50%; top: 50%; bottom: 0; width: var(--border-width-heavy); transform: translateX(-50%) scaleY(0); transform-origin: top; --ld: 1300ms; }
+.sv-sa--s1.is-in .sv-sa-s1-drop  { background: var(--audit-rail); transform: translateX(-50%) scaleY(1); }
+.sv-sa--s1.is-in .sv-sa-s1-rail  { background: var(--audit-rail); transform: scaleX(1); }
+.sv-sa--s1.is-in .sv-sa-s1-trunk { background: var(--audit-rail); transform: translateX(-50%) scaleY(1); }
+
+/* ---- Gold beads stream down the chain into the core -------- */
+.sv-sa-s1-dot {
+  position: absolute;
+  top: 0;
+  left: var(--x, 50%);
+  width: var(--space-2);
+  height: var(--space-2);
+  margin: calc(var(--space-2) / -2) 0 0 calc(var(--space-2) / -2);  /* centre on the line */
+  border-radius: var(--radius-full);
+  background: var(--audit-node);
+  box-shadow: var(--glow-gold);
+  opacity: 0;
+}
+.sv-sa--s1.is-in .sv-sa-s1-dot { animation: sv-s1-flow 1600ms var(--ease-standard) var(--df, 0ms) both; }
+/* Down the drop → along the rail → down the trunk → absorbed.
+   Ends at opacity:0 so reduced-motion (which jumps to the final
+   frame) leaves no stray bead. */
+@keyframes sv-s1-flow {
+  0%   { left: var(--x); top: 0%;   opacity: 0; }
+  12%  { left: var(--x); top: 0%;   opacity: 1; }
+  44%  { left: var(--x); top: 50%;  opacity: 1; }
+  72%  { left: 50%;      top: 50%;  opacity: 1; }
+  96%  { left: 50%;      top: 100%; opacity: 1; }
+  100% { left: 50%;      top: 100%; opacity: 0; }
+}
+.sv-sa-s1-dot--1a, .sv-sa-s1-dot--1b { --x: 16.66%; }
+.sv-sa-s1-dot--2a, .sv-sa-s1-dot--2b { --x: 50%; }
+.sv-sa-s1-dot--3a, .sv-sa-s1-dot--3b { --x: 83.33%; }
+.sv-sa-s1-dot--1a { --df: 1200ms; } .sv-sa-s1-dot--1b { --df: 1550ms; }
+.sv-sa-s1-dot--2a { --df: 1300ms; } .sv-sa-s1-dot--2b { --df: 1650ms; }
+.sv-sa-s1-dot--3a { --df: 1400ms; } .sv-sa-s1-dot--3b { --df: 1750ms; }
+
+/* ---- The one governed destination: "Sovrinty" ------------- */
 .sv-sa-core {
   align-self: center;
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-3) var(--space-4);
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-5);
   background: var(--seal-surface);
   border: var(--border-width-hairline) solid var(--seal-border);
   border-radius: var(--radius-md);
-  font-size: var(--text-sm);
-  font-weight: var(--weight-semibold);
-  color: var(--text-primary);
   opacity: 0;
   transform: translateY(var(--space-2));
   box-shadow: none;
-  transition: opacity var(--duration-slow) var(--ease-out) 400ms,
-              transform var(--duration-slow) var(--ease-out) 400ms,
-              box-shadow var(--duration-slow) var(--ease-standard) 700ms;
+  transition: opacity var(--duration-slow) var(--ease-out) 2150ms,
+              transform var(--duration-slow) var(--ease-out) 2150ms,
+              box-shadow var(--duration-slow) var(--ease-standard) 3150ms;
 }
 .sv-sa--s1.is-in .sv-sa-core { opacity: 1; transform: none; box-shadow: var(--glow-gold); }
 .sv-sa-core__seal {
-  width: var(--space-3);
-  height: var(--space-3);
+  width: var(--space-4);
+  height: var(--space-4);
   flex: none;
   transform: rotate(45deg);
   background: var(--provenance-solid);
   border-radius: var(--radius-xs);
+}
+.sv-sa-core__text { display: flex; flex-direction: column; line-height: var(--leading-tight); }
+.sv-sa-core__name {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
+}
+.sv-sa-core__sub {
+  font-size: var(--text-2xs);
+  color: var(--text-tertiary);
 }
 
 /* ============================================================
@@ -333,8 +458,11 @@
 }
 .sv-sa-hash { font-family: var(--font-mono); font-size: var(--text-2xs); color: var(--provenance-strong); }
 
-/* Narrow phones: tighten the S1 source chips so the three never overflow. */
+/* Narrow phones: tighten the S1 source boxes + core so nothing overflows. */
 @media (max-width: 480px) {
-  .sv-sa-s1__chips { gap: var(--space-1); }
-  .sv-sa-chip { padding: var(--space-1) var(--space-2); }
+  .sv-sa-s1__sources { gap: var(--space-2); }
+  .sv-sa-s1-box { padding: var(--space-1); }
+  .sv-sa-s1-box__stack { height: var(--space-8); }
+  .sv-sa-core { padding: var(--space-2) var(--space-3); gap: var(--space-2); }
+  .sv-sa-core__name { font-size: var(--text-md); }
 }
