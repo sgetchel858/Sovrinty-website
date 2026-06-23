@@ -451,7 +451,6 @@
   font-weight: var(--weight-semibold);
 }
 .sv-explainer__p { margin-top: var(--space-3); color: var(--text-secondary); line-height: var(--leading-relaxed); }
-.sv-explainer__back { margin-top: var(--space-10); padding-top: var(--space-6); border-top: var(--border-width-hairline) solid var(--border-subtle); }
 
 /* ============================================================
    Pager — prev / next across the ten problem doorways (P0–P9).
