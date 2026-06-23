@@ -19,7 +19,7 @@ lazy-loaded, with a captions `<track>` slot. Animations must honor
 |---|---|---|---|---|---|---|
 | s0-framing        | anim  | S0 | 16/9 | —    | **live** (CSS/JS) | the unproven answer — a chat window: user (right/violet) asks, generic "Assistant" (left/grey) answers confidently from nowhere with typing dots, user pushes back, it folds to "I don't know" + a hollow amber "unverified" seal. `pages/walkthrough.css` + `js/modules/walkthrough-scenes.js` |
 | s1-single-source  | anim  | S1 | 16/9 | —    | **live** (CSS/JS) | scattered sources → a forming gold chain → one sealed "Governed source of truth" |
-| s2-mission-control| video | S2 | 16/9 | ~30s | approved | Librarian detects + assigns; health → 100%. Remotion build in `Videos/Scenes/s2-mission-control` → `assets/media/{video,poster,captions}/s2-mission-control.*` |
+| s2-tbd            | reserved | S2 | 16/9 | —    | placeholder | Scene 2 reserved — "Mission Control" cut (it depicted a standalone dashboard the product lacks). Replacement content TBD. The retired clip stays in the repo but is unused by the page: `assets/media/{video,poster,captions}/s2-mission-control.*` |
 | s3-sme-desk       | video | S3 | 16/9 | ~20s | approved | SME inbox, complete in Microsoft Teams; own screen → 100%. Remotion build in `Videos/Scenes/s3-sme-desk` → `assets/media/{video,poster,captions}/s3-sme-desk.*` |
 | s4-proof          | anim  | S4 | 16/9 | —    | **live** (CSS/JS) | answer → citation thread → green "Verified" seal stamps → audit hash + Golden Spike |
 | s5-stays-current  | video | S5 | 16/9 | ~20s | placeholder | published → approve → health 100% |
