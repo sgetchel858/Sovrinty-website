@@ -414,21 +414,6 @@
 }
 .sv-scene__body { margin-top: var(--space-5); color: var(--text-secondary); line-height: var(--leading-relaxed); }
 .sv-scene__body p + p { margin-top: var(--space-4); }
-.sv-scene__doorways { margin-top: var(--space-6); display: flex; flex-direction: column; gap: var(--space-2); }
-.sv-doorlink {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  align-self: flex-start;
-  padding: var(--space-2) var(--space-3);
-  font-size: var(--text-sm);
-  font-weight: var(--weight-medium);
-  color: var(--text-link);
-  background: var(--brand-primary-subtle);
-  border-radius: var(--radius-sm);
-}
-.sv-doorlink:hover { text-decoration: none; background: var(--violet-200); }
-.sv-doorlink__tag { font-family: var(--font-mono); font-size: var(--text-2xs); color: var(--brand-primary); }
 
 /* ============================================================
    Explainer — problem page template (BUILD_SPEC §7)
